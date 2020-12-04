@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>C&aacute;lculo de &iacute;ndice de Malestar</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<script>
+	function IM(){
+		var T =document.getElementById('T').value;
+		var H =document.getElementById('H').value
+		var R;
+		var S;
+		var U;
+		var V;
+		var W;
+		var X;
+		var Y;
+
+ 		R=0.01*H
+ 		S=0.99*T
+ 		Y=S-14.3
+ 		U=R*Y
+ 		V=0.81*T
+ 		W= V +46.3
+ 		X= U+W
+
+ 		var sensacion;
+
+		if(X < 55) {
+			sensacion = "frío";
+		} else if (X < 60) {
+			sensacion = "fresco";
+		} else if (X < 65) {
+			sensacion = "templado";
+		} else if (X < 70) {
+			sensacion= "agradable";
+		} else if (X < 75) {
+			sensacion= "no cálido";
+		} else if (X < 80) {
+			sensacion= "algo cálido";
+		}else if (X < 85){ 
+			sensacion= "cálido";
+		}else {
+			sensacion = "sofocante";
+		}
+		document.getElementById('resultado').innerHTML= `El clima es ${sensacion}.`;
+	}
+	function blank(){
+		document.getElementById('T').value = '';
+		document.getElementById('H').value = '';
+	}
+	</script>
+	<style>
+	input{
+		border-radius: 15%;
+		border-color: aquamarine;
+		width: 65%;
+		font-size: 95%;
+		text-align: center;
+	}
+	body{
+		color: black;
+		margin: 3%;
+		background-image: url('Fondo.png');
+		font-size: 120%;
+	}
+	h1{
+		text-align: center;
+	}
+	input::placeholder{
+		text-align: center;
+	}
+	div{
+	   margin: 2%;
+	   text-align: center;
+	}
+	button{
+		width: 65.5%;
+	}
+	button.appear-magenta:hover{
+		background-color:#FFFFFF;
+		color:#EE00EE;
+		text-align:center;
+		border-color:#EE00EE;
+	}
+	button.appear-magenta{
+		background-color:#EE00EE;
+		color:white;
+		text-align:center;
+	}
+	</style>
+</head>
+<body onload="blank()">
+<h1>C&aacute;lculo de &Iacute;ndice de Malestar</h1>
+<br>
+<p>El &Iacute;ndice de Malestar nos permite conocer la 
+	sensaci&oacute;n t&eacute;rmica para poder decidir que ropa usar, entre 
+	otras muchas utilidades. Los datos que se requieren son la temperatura 
+	m&aacute;xima del d&iacute;a y la humedad. Por favor llene los siguientes
+	datos para conocer el &Iacute;ndice de Malestar. Por favor solo escriba 
+	solo los numeros (no ° ni %)</p>
+	<div>
+		<input type="number" id="T" placeholder="Temperatura máxima en grados Cent&iacute;grados sin el signo de grados (°).">
+		<input type="number" id="H" placeholder="Nivel de humedad sin el signo de porciento (%).">
+		<br>
+		<button onclick="IM()" class="appear-magenta" id="calcular">Calcular</button>
+		<div id="resultado"></div>
+	</div>
+</body>
+</html>
